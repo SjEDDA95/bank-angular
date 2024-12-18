@@ -45,11 +45,18 @@
 
   </ng-container>
 
+  <!-- START @TODO 13-->
   <ng-template #failureOrLoading>
-    <div class="text-danger">
+    <!-- If there's an error message, show it. Otherwise, show a loading indicator. -->
+    <div *ngIf="errorMessage; else loadingTemplate" class="text-danger">
       {{errorMessage}}
     </div>
+
+    <ng-template #loadingTemplate>
+      <div>Loading...</div>
+    </ng-template>
   </ng-template>
+  <!-- START @TODO 13-->
 
   <!-- END OF @TODO 12 -->
 
