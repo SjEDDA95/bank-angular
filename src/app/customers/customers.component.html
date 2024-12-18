@@ -1,0 +1,56 @@
+<!-- @TODO 7 Afficher la liste des clients  -->
+<!-- Une fois que les données sont chargées, on les affiches
+     @TODO 8 -->
+<div class="container mt-2">
+
+  <!-- START OF @TODO 12 -->
+
+  <!-- J'écoute l'Observable customers, je fais un subscribe, s'il ya les données je récup
+  sinon failure #-->
+  <ng-container *ngIf="customers | async as listCustomers; else failureOrLoading">
+
+    <div class="card">
+      <div class="card-header">Liste des clients</div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th> ID </th>
+            <th> Name </th>
+            <th> Email </th>
+          </tr>
+          </thead>
+          <tbody>
+          <!--boucle sur les clients-->
+          <!--pour chaquer customers c de la liste des customers-->
+
+          <!--
+
+          "For every group of customers delivered by the customers Observable,
+          the async pipe will extract the latest list of customers and
+          *ngFor will create one <tr> per customer,
+          showing their ID, name, and email in the table rows.”
+
+          -->
+
+          <tr *ngFor="let c of customers | async">
+            <td>{{c.id}}</td>
+            <td>{{c.customerName}}</td>
+            <td>{{c.customerEmail}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-template #failureOrLoading>
+    <div class="text-danger">
+      {{errorMessage}}
+    </div>
+  </ng-template>
+
+  <!-- END OF @TODO 12 -->
+
+</div>
